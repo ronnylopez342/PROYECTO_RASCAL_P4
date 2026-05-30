@@ -1,5 +1,0 @@
-defmodule TypedSpaceUnknownElementError
-
-defspace Set : Element end
-
-end
