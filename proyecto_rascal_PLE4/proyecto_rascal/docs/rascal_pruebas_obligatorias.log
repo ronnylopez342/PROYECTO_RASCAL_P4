@@ -1,0 +1,78 @@
+[INFO] pom.xml: Rascal version is 0.42.2
+[INFO] pom.xml: Project root is |file:///mnt/data/fix_ple4/proyecto_rascal/|
+[INFO] pom.xml: Bin folder   is |file:///mnt/data/fix_ple4/proyecto_rascal/target/classes|
+[INFO] pom.xml: Source module path is:
+  - |std:///|
+  - |file:///mnt/data/fix_ple4/proyecto_rascal/src/main/rascal|
+[INFO] pom.xml: Library module (and classes) path is:
+  - |file:///mnt/data/fix_ple4/proyecto_rascal/rascal-shell-stable.jar|
+2026-05-30T03:47:50.501714274Z main ERROR Log4j API could not find a logging provider.
+rascal>Job: loading modules
+Job: loading modules
+Job: Generating parser; STRING CHAR VarDecl Invocation FLOAT Variables Quantifier Number NotExp ArithOp Statement FileImport INT Expression AttributeList OrExp RelOp Rule Attribute ID TopExp Primary Body BoolLiteral MainModule RelExp Domain Operator AndExp Space
+ok
+rascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/spec_types.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+Checker ejecutado correctamente.
+No se encontraron errores semanticos.
+
+3. Generando codigo VeriLang...
+
+Resultado generado:
+----------------------------------------
+defmodule TypeExamples
+
+
+defspace Person end
+defspace Group : Person end
+defvar age : int otherAge : int active : bool verified : bool score : real otherScore : real name : string otherName : string initial : char otherInitial : char p : Person q : Person g : Group end
+defoperator samePerson : Person -> Person -> bool end
+defoperator belongsTo : Person -> Group -> bool end
+defoperator combineScores : real -> real -> real end
+defexpression age = otherAge end
+defexpression active and verified end
+defexpression score = otherScore end
+defexpression name = otherName end
+defexpression initial = otherInitial end
+defexpression p = q end
+defexpression p belongsTo g end
+defexpression p samePerson q end
+defexpression (forall member in Group . member belongsTo g) end
+end
+----------------------------------------
+
+Ejecucion finalizada correctamente.
+========================================
+int: 0
+rascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/errors/spec_unknown_space_error.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+
+El programa contiene errores semanticos:
+error("Undefined space `Person`",|cwd:///instance/errors/spec_unknown_space_error.vl|(46,6,<3,17>,<3,23>),fixes=[])
+
+No se genera codigo porque el programa no paso el chequeo semantico.
+========================================
+int: 1
+rascal>Job: loading modules
+ok
+rascal>{"success":true,"module":"VeriLang","parseOk":true,"typeCheckOk":true,"semanticOk":true,"typeErrors":[],"semanticErrors":[],"output":["defmodule TypeExamples\n\n\ndefspace Person end\ndefspace Group : Person end\ndefvar age : int otherAge : int active : bool verified : bool score : real otherScore : real name : string otherName : string initial : char otherInitial : char p : Person q : Person g : Group end\ndefoperator samePerson : Person -> Person -> bool end\ndefoperator belongsTo : Person -> Group -> bool end\ndefoperator combineScores : real -> real -> real end\ndefexpression age = otherAge end\ndefexpression active and verified end\ndefexpression score = otherScore end\ndefexpression name = otherName end\ndefexpression initial = otherInitial end\ndefexpression p = q end\ndefexpression p belongsTo g end\ndefexpression p samePerson q end\ndefexpression (forall member in Group . member belongsTo g) end\nend"],"error":"","codigoFormateado":"defmodule TypeExamples\n\n\ndefspace Person end\ndefspace Group : Person end\ndefvar age : int otherAge : int active : bool verified : bool score : real otherScore : real name : string otherName : string initial : char otherInitial : char p : Person q : Person g : Group end\ndefoperator samePerson : Person -> Person -> bool end\ndefoperator belongsTo : Person -> Group -> bool end\ndefoperator combineScores : real -> real -> real end\ndefexpression age = otherAge end\ndefexpression active and verified end\ndefexpression score = otherScore end\ndefexpression name = otherName end\ndefexpression initial = otherInitial end\ndefexpression p = q end\ndefexpression p belongsTo g end\ndefexpression p samePerson q end\ndefexpression (forall member in Group . member belongsTo g) end\nend","resumen":"Programa VeriLang parseado, chequeado y generado correctamente."}
+ok
+rascal>{"success":false,"module":"VeriLang","parseOk":true,"typeCheckOk":false,"semanticOk":false,"typeErrors":["error(\"Undefined space `Person`\",|cwd:///instance/errors/spec_unknown_space_error.vl|(46,6,<3,17>,<3,23>),fixes=[])"],"semanticErrors":["error(\"Undefined space `Person`\",|cwd:///instance/errors/spec_unknown_space_error.vl|(46,6,<3,17>,<3,23>),fixes=[])"],"output":[],"error":"","codigoFormateado":"","resumen":"El programa VeriLang contiene errores semanticos."}
+ok
+rascal>Quiting REPL
