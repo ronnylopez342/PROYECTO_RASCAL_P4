@@ -1,0 +1,355 @@
+[INFO] pom.xml: Rascal version is 0.42.2
+[INFO] pom.xml: Project root is |file:///mnt/data/build_complete/proyecto_rascal/|
+[INFO] pom.xml: Bin folder   is |file:///mnt/data/build_complete/proyecto_rascal/target/classes|
+[INFO] pom.xml: Source module path is:
+  - |std:///|
+  - |file:///mnt/data/build_complete/proyecto_rascal/src/main/rascal|
+[INFO] pom.xml: Library module (and classes) path is:
+  - |file:///mnt/data/build_complete/proyecto_rascal/rascal-shell-stable.jar|
+2026-05-30T04:16:47.503155729Z main ERROR Log4j API could not find a logging provider.
+[?2004lrascal>Job: loading modules
+Job: loading modules
+Job: Generating parser; STRING CHAR VarDecl Invocation FLOAT Variables Quantifier Number NotExp ArithOp Statement FileImport INT Expression AttributeList OrExp RelOp Rule Attribute ID TopExp Primary Body BoolLiteral MainModule RelExp Domain Operator AndExp Space
+ok
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/spec1.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+Checker ejecutado correctamente.
+No se encontraron errores semanticos.
+
+3. Generando codigo VeriLang...
+
+Resultado generado:
+----------------------------------------
+defmodule MiModulo
+using LibA
+using LibB
+
+defspace reales end
+defspace Set end
+defspace Element end
+defvar x : int end
+defvar y : int end
+defvar a : Set end
+defvar b : Set end
+defvar r : bool end
+defvar s : bool end
+defvar abs : int end
+defspace enteros < reales end
+defoperator suma : int -> int -> int end
+defoperator resta : real -> real end
+defoperator inter : Set -> Set -> Set end
+defoperator union : Set -> Set -> Set end
+defoperator min : Set -> int -> bool end
+defoperator isIn : Element -> Set -> bool end
+defrule (suma x y) -> (suma y x) end
+[conmutative:bool asociative:int]
+defexpression (forall x in Set . ((b inter a) = a)) end
+defexpression (defer y in Set . (y min 0)) end
+defexpression (abs ≡ 0) end
+defexpression (not r and s or r) end
+defexpression (defer x in Set . r and s) end
+defexpression (forall x in Element . (forall S in Set . (forall U in Set . x isIn (S union U)))) end
+defexpression (forall y in Set . y = y) end
+end
+----------------------------------------
+
+Ejecucion finalizada correctamente.
+========================================
+int: 0
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/spec2.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+Checker ejecutado correctamente.
+No se encontraron errores semanticos.
+
+3. Generando codigo VeriLang...
+
+Resultado generado:
+----------------------------------------
+defmodule Test
+
+
+defspace Reals end
+defspace Integer < Reals end
+defspace Set end
+defvar x : int y : int s : Set t : Set b : bool end
+defoperator union : Set -> Set -> Set end
+defoperator suma : int -> int -> int end
+defrule (suma x y) -> (suma y x) end
+defexpression x = y end
+defexpression s union t end
+defexpression b end
+end
+----------------------------------------
+
+Ejecucion finalizada correctamente.
+========================================
+int: 0
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/spec3.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+Checker ejecutado correctamente.
+No se encontraron errores semanticos.
+
+3. Generando codigo VeriLang...
+
+Resultado generado:
+----------------------------------------
+defmodule Test2
+
+
+defoperator negation : bool -> bool end
+defvar p : bool z : bool end
+defrule (negation p) -> (negation z) end
+end
+----------------------------------------
+
+Ejecucion finalizada correctamente.
+========================================
+int: 0
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/spec_typed_space_good.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+Checker ejecutado correctamente.
+No se encontraron errores semanticos.
+
+3. Generando codigo VeriLang...
+
+Resultado generado:
+----------------------------------------
+defmodule TypedSpaceGood
+
+
+defspace Element end
+defspace Set : Element end
+defvar e : Element s : Set end
+defoperator belongsTo : Element -> Set -> bool end
+defexpression e belongsTo s end
+end
+----------------------------------------
+
+Ejecucion finalizada correctamente.
+========================================
+int: 0
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/spec_typed_space_quantifier_good.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+Checker ejecutado correctamente.
+No se encontraron errores semanticos.
+
+3. Generando codigo VeriLang...
+
+Resultado generado:
+----------------------------------------
+defmodule TypedSpaceQuantifierGood
+
+
+defspace Element end
+defspace Set : Element end
+defvar s : Set end
+defoperator belongsTo : Element -> Set -> bool end
+defexpression (forall e in Set . e belongsTo s) end
+end
+----------------------------------------
+
+Ejecucion finalizada correctamente.
+========================================
+int: 0
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/spec_types.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+Checker ejecutado correctamente.
+No se encontraron errores semanticos.
+
+3. Generando codigo VeriLang...
+
+Resultado generado:
+----------------------------------------
+defmodule TypeExamples
+
+
+defspace Person end
+defspace Group : Person end
+defvar age : int otherAge : int active : bool verified : bool score : real otherScore : real name : string otherName : string initial : char otherInitial : char p : Person q : Person g : Group end
+defoperator samePerson : Person -> Person -> bool end
+defoperator belongsTo : Person -> Group -> bool end
+defoperator combineScores : real -> real -> real end
+defexpression age = otherAge end
+defexpression active and verified end
+defexpression score = otherScore end
+defexpression name = otherName end
+defexpression initial = otherInitial end
+defexpression p = q end
+defexpression p belongsTo g end
+defexpression p samePerson q end
+defexpression (forall member in Group . member belongsTo g) end
+end
+----------------------------------------
+
+Ejecucion finalizada correctamente.
+========================================
+int: 0
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/errors/spec_logic_error.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+
+El programa contiene errores semanticos:
+error("El lado izquierdo de and debe tener tipo booleano",|cwd:///instance/errors/spec_logic_error.vl|(80,1,<8,14>,<8,15>),fixes=[],causes=[])
+
+No se genera codigo porque el programa no paso el chequeo semantico.
+========================================
+int: 1
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/errors/spec_operator_error.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+
+El programa contiene errores semanticos:
+error("El lado izquierdo del operador no coincide con su firma",|cwd:///instance/errors/spec_operator_error.vl|(212,3,<15,14>,<15,17>),fixes=[],causes=[])
+
+No se genera codigo porque el programa no paso el chequeo semantico.
+========================================
+int: 1
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/errors/spec_rule_error.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+
+El programa contiene errores semanticos:
+error("El segundo argumento no coincide con el tipo esperado por el operador",|cwd:///instance/errors/spec_rule_error.vl|(123,1,<10,16>,<10,17>),fixes=[],causes=[])
+error("El primer argumento no coincide con el tipo esperado por el operador",|cwd:///instance/errors/spec_rule_error.vl|(135,1,<10,28>,<10,29>),fixes=[],causes=[])
+
+No se genera codigo porque el programa no paso el chequeo semantico.
+========================================
+int: 1
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/errors/spec_type_error.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+
+El programa contiene errores semanticos:
+error("Los dos lados de la relacion deben tener el mismo tipo",|cwd:///instance/errors/spec_type_error.vl|(79,5,<8,14>,<8,19>),fixes=[],causes=[])
+
+No se genera codigo porque el programa no paso el chequeo semantico.
+========================================
+int: 1
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/errors/spec_typed_space_quantifier_type_error.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+
+El programa contiene errores semanticos:
+error("El lado izquierdo del operador no coincide con su firma",|cwd:///instance/errors/spec_typed_space_quantifier_type_error.vl|(248,1,<13,33>,<13,34>),fixes=[],causes=[])
+
+No se genera codigo porque el programa no paso el chequeo semantico.
+========================================
+int: 1
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/errors/spec_typed_space_unknown_element_error.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+
+El programa contiene errores semanticos:
+error("Undefined space `Element`",|cwd:///instance/errors/spec_typed_space_unknown_element_error.vl|(56,7,<3,15>,<3,22>),fixes=[])
+
+No se genera codigo porque el programa no paso el chequeo semantico.
+========================================
+int: 1
+[?2004lrascal>========================================
+Ejecucion de programa VeriLang
+========================================
+Archivo de entrada:
+|cwd:///instance/errors/spec_unknown_space_error.vl|
+
+1. Parseando archivo...
+Parser ejecutado correctamente.
+
+2. Ejecutando checker con TypePal...
+
+El programa contiene errores semanticos:
+error("Undefined space `Person`",|cwd:///instance/errors/spec_unknown_space_error.vl|(46,6,<3,17>,<3,23>),fixes=[])
+
+No se genera codigo porque el programa no paso el chequeo semantico.
+========================================
+int: 1
+[?2004lrascal>Quiting REPL

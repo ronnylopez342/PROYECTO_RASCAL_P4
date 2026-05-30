@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>edu.uniandes.isis2111</groupId>
+  <artifactId>proyecto-rascal-verilang-kotlin</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.rascalmpl</groupId>
+        <artifactId>rascal-maven-plugin</artifactId>
+        <version>0.8.2</version>
+        <configuration>
+          <errorsAsWarnings>true</errorsAsWarnings>
+          <bin>${project.build.outputDirectory}</bin>
+          <srcs>
+            <src>${project.basedir}/src/main/rascal</src>
+          </srcs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
